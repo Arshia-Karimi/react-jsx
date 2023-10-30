@@ -1,7 +1,12 @@
 .App {
   text-align: center;
 }
-
+.success {
+  background-color: green;
+}
+.warnning{
+  background-color: red;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
