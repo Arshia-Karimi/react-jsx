@@ -1,3 +1,7 @@
+body {
+  background-color: black;
+  color: white;
+}
 .App {
   text-align: center;
 }
@@ -7,8 +11,24 @@
   background-color: black;
   color: white;
   cursor: pointer;
-
   margin: 10px;
+}
+.none {
+  display: none;
+}
+.red{
+  color: red;
+}
+p{
+  color: red;
+}
+input {
+  border: 1px solid white;
+  width: 213px;
+  height: 30px;
+  color: white;
+  border-radius: 10px;
+  background-color: black;
 }
 .success {
   background-color: green;
