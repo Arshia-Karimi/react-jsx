@@ -31,14 +31,29 @@ function App() {
     { name: "python", finished: true },
   ];
 
-  const [showText, setShowTex] = useState(true);
+  const [showText, setShowText] = useState(true);
 
   const toggleText = () => {
-    setShowTex(!showText);
+    setShowText(!showText);
   };
 
-  const [textColor, setTextColor] = useState("red");
+  const [textColor, setTextColor] = useState(true);
 
+  const [agee, setAgee] = useState(0);
+
+  const [courseList, setCourseList] = useState([]);
+  const [newCourse, setNewCourse] = useState("");
+  const handelChange = (event) => {
+    setNewCourse(event.target.value);
+  };
+
+  const addCourse = () => {
+    setCourseList([...courseList, newCourse]);
+  };
+
+  const deleteCourse = (CourseName) => {
+    setCourseList(courseList.filter((Course) => CourseName !== Course));
+  };
   return (
     <div className="App">
       {names.map((a, b) => {
@@ -63,12 +78,55 @@ function App() {
       <button
         className="btn"
         onClick={() => {
-          setTextColor("blue");
+          setTextColor(!textColor);
         }}
       >
         Click
       </button>
-      <h1 style={{ color: textColor }}>Odin Alfater</h1>
+      <h1 className={textColor ? "redText" : "blueText"}>Odin Alfater</h1>
+      <button
+        className="btn"
+        onClick={() => {
+          if (agee < 10) {
+            setAgee(agee + 1);
+          }
+        }}
+      >
+        increat +
+      </button>
+
+      <button className="btn" onClick={() => setAgee(0)}>
+        set to 0
+      </button>
+      <button
+        className="btn"
+        onClick={() => {
+          if (agee > 0) {
+            setAgee(agee - 1);
+          }
+        }}
+      >
+        decreat -
+      </button>
+      {agee === 10 ? <p>حداکثر</p> : null}
+      <h1>{agee}</h1>
+      <hr />
+      <div className="add-course">
+        <input type="text" onChange={handelChange}></input>
+        <button onClick={addCourse} className="btn">
+          Add Course
+        </button>
+      </div>
+      <div className="list">
+        {courseList.map((Course) => {
+          return (
+            <div>
+              <h1>{Course}</h1>
+              <button onClick={() => deleteCourse(Course)}>x</button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

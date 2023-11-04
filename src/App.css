@@ -16,10 +16,10 @@ body {
 .none {
   display: none;
 }
-.red{
+.red {
   color: red;
 }
-p{
+p {
   color: red;
 }
 input {
@@ -29,6 +29,12 @@ input {
   color: white;
   border-radius: 10px;
   background-color: black;
+}
+.redText {
+  color: rgb(0, 255, 145);
+}
+.blueText {
+  color: rgb(255, 0, 234);
 }
 .success {
   background-color: green;
