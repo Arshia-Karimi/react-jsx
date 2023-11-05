@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState } from "react";
+import Course from "./Course";
 
 function App() {
   const [age, setAge] = useState(0);
@@ -48,12 +49,18 @@ function App() {
   };
 
   const addCourse = () => {
-    setCourseList([...courseList, newCourse]);
+    const course = {
+      id:
+        courseList.length === 0 ? 1 : courseList[courseList.length - 1].id + 1,
+      CourseName: newCourse,
+    };
+    setCourseList([...courseList, course]);
   };
 
-  const deleteCourse = (CourseName) => {
-    setCourseList(courseList.filter((Course) => CourseName !== Course));
+  const deleteCourse = (CourseId) => {
+    setCourseList(courseList.filter((Course) => CourseId !== Course.id));
   };
+
   return (
     <div className="App">
       {names.map((a, b) => {
@@ -67,6 +74,7 @@ function App() {
       <button className={age > 0 ? "btn" : "none"} onClick={decreaseAge}>
         Increase age -
       </button>
+
       <br />
       <input type="text" onChange={handelInputChange}></input>
       <h1>{inputValue}</h1>
@@ -118,13 +126,8 @@ function App() {
         </button>
       </div>
       <div className="list">
-        {courseList.map((Course) => {
-          return (
-            <div>
-              <h1>{Course}</h1>
-              <button onClick={() => deleteCourse(Course)}>x</button>
-            </div>
-          );
+        {courseList.map((Course, index) => {
+          return <Course />;
         })}
       </div>
     </div>
