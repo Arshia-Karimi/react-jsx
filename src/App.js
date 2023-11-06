@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import Course from "./Course";
+import Course from "./Course.js";
 
 function App() {
   const [age, setAge] = useState(0);
@@ -44,6 +44,7 @@ function App() {
 
   const [courseList, setCourseList] = useState([]);
   const [newCourse, setNewCourse] = useState("");
+
   const handelChange = (event) => {
     setNewCourse(event.target.value);
   };
@@ -52,13 +53,21 @@ function App() {
     const course = {
       id:
         courseList.length === 0 ? 1 : courseList[courseList.length - 1].id + 1,
-      CourseName: newCourse,
+      courseName: newCourse,
     };
     setCourseList([...courseList, course]);
   };
 
   const deleteCourse = (CourseId) => {
     setCourseList(courseList.filter((Course) => CourseId !== Course.id));
+  };
+
+  const completedCourse = (CourseId) => {
+    const newCourseList = courseList.map((course) => {
+      if (course.id === CourseId) return { ...course, isCompleted: true };
+      else return course;
+    });
+    setCourseList(newCourseList);
   };
 
   return (
@@ -120,14 +129,21 @@ function App() {
       <h1>{agee}</h1>
       <hr />
       <div className="add-course">
-        <input type="text" onChange={handelChange}></input>
+        <input type="text" onChange={(event) => handelChange(event)} />
         <button onClick={addCourse} className="btn">
           Add Course
         </button>
       </div>
       <div className="list">
-        {courseList.map((Course, index) => {
-          return <Course />;
+        {courseList.map((course, index) => {
+          return (
+            <Course
+              key={index}
+              course={course}
+              deleteCourse={deleteCourse}
+              completedCourse={completedCourse}
+            />
+          );
         })}
       </div>
     </div>
