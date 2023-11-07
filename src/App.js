@@ -54,6 +54,7 @@ function App() {
       id:
         courseList.length === 0 ? 1 : courseList[courseList.length - 1].id + 1,
       courseName: newCourse,
+      isCompleted: false,
     };
     setCourseList([...courseList, course]);
   };
@@ -62,12 +63,13 @@ function App() {
     setCourseList(courseList.filter((Course) => CourseId !== Course.id));
   };
 
-  const completedCourse = (CourseId) => {
+  const completedCourse = (courseId) => {
     const newCourseList = courseList.map((course) => {
-      if (course.id === CourseId) return { ...course, isCompleted: true };
+      if (course.id === courseId) return { ...course, isCompleted: true };
       else return course;
     });
     setCourseList(newCourseList);
+    console.log(newCourse);
   };
 
   return (
