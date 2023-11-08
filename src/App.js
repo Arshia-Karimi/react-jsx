@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import Course from "./Course.js";
+import Text from "./Text.js";
 
 function App() {
   const [age, setAge] = useState(0);
@@ -65,12 +66,15 @@ function App() {
 
   const completedCourse = (courseId) => {
     const newCourseList = courseList.map((course) => {
-      if (course.id === courseId) return { ...course, isCompleted: true };
+      if (course.id === courseId)
+        return { ...course, isCompleted: !course.isCompleted };
       else return course;
     });
     setCourseList(newCourseList);
     console.log(newCourse);
   };
+
+  const [showTextt, setShowTextt] = useState(false);
 
   return (
     <div className="App">
@@ -148,6 +152,8 @@ function App() {
           );
         })}
       </div>
+      <button onClick={() => setShowTextt(!showTextt)}>show Text</button>
+      {showTextt && <Text />}
     </div>
   );
 }
