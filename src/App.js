@@ -136,7 +136,7 @@ function App() {
       <hr />
       <div className="add-course">
         <input type="text" onChange={(event) => handelChange(event)} />
-        <button onClick={addCourse} className="btn">
+        <button onClick={addCourse} className="btn dex">
           Add Course
         </button>
       </div>
@@ -152,7 +152,7 @@ function App() {
           );
         })}
       </div>
-      <button onClick={() => setShowTextt(!showTextt)}>show Text</button>
+      <button className="bttn" onClick={() => setShowTextt(!showTextt)}>show Text</button>
       {showTextt && <Text />}
     </div>
   );
