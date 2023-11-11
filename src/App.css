@@ -46,10 +46,10 @@ input {
   height: 40vmin;
   pointer-events: none;
 }
-.bttn{
+.bttn {
   color: red;
 }
-.dex{
+.dex {
   color: red;
 }
 @media (prefers-reduced-motion: no-preference) {

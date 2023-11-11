@@ -1,7 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Text = () => {
   const [text, setText] = useState("");
+  useEffect(() => {
+    console.log("component did mount");
+
+    return () => {
+      console.log("component unmount");
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log("component updated");
+  }, [text]);
 
   return (
     <div>

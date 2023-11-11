@@ -89,7 +89,6 @@ function App() {
       <button className={age > 0 ? "btn" : "none"} onClick={decreaseAge}>
         Increase age -
       </button>
-
       <br />
       <input type="text" onChange={handelInputChange}></input>
       <h1>{inputValue}</h1>
@@ -152,7 +151,9 @@ function App() {
           );
         })}
       </div>
-      <button className="bttn" onClick={() => setShowTextt(!showTextt)}>show Text</button>
+      <button className="btn bttn" onClick={() => setShowTextt(!showTextt)}>
+        show Text
+      </button>
       {showTextt && <Text />}
     </div>
   );
