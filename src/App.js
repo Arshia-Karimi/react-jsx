@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react";
 import "./App.css";
-import { useState } from "react";
+import Axios from "axios";
 import Course from "./Course.js";
 import Text from "./Text.js";
+import axios from "axios";
 
 function App() {
   const [age, setAge] = useState(0);
@@ -76,6 +78,23 @@ function App() {
 
   const [showTextt, setShowTextt] = useState(false);
 
+  const [catFact, setCatFact] = useState("");
+  useEffect(() => {
+    fetchFact();
+  }, []);
+
+  const fetchFact = () => {
+    Axios.get("https://catfact.ninja/fact").then((res) => {
+      console.log(res.date);
+      setCatFact(res.data.fact);
+    });
+  };
+  const [name, setName] = useState("");
+  const fetchAge = () => {
+    Axios.get(`https://api.agify.io/?name=${name}`).then((res) => {
+      console.log(res.data);
+    });
+  };
   return (
     <div className="App">
       {names.map((a, b) => {
@@ -155,6 +174,19 @@ function App() {
         show Text
       </button>
       {showTextt && <Text />}
+      <br />
+      <button className="btn" onClick={fetchFact}>
+        fetch date
+      </button>
+      <p>{catFact}</p>
+      <input
+        placeholder="Thor Odin..."
+        onChange={(event) => setName(event.target.value)}
+      />
+      <button onClick={fetchAge} className="btn">
+        Predict age
+      </button>
+      <h1>{fetchAge}</h1>
     </div>
   );
 }

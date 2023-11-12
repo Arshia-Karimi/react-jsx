@@ -1,7 +1,7 @@
 const Course = (props) => {
   return (
     <div
-      style={{ border: props.course.isCompleted ? "1px solid white" : "blue" }}
+      style={{ border: props.course.isCompleted ? "1px solid white" : "red" }}
     >
       <h1>{props.course.courseName}</h1>
       <button onClick={() => props.deleteCourse(props.course.id)}>x</button>
