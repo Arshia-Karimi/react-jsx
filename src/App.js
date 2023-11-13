@@ -3,7 +3,7 @@ import "./App.css";
 import Axios from "axios";
 import Course from "./Course.js";
 import Text from "./Text.js";
-import axios from "axios";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [age, setAge] = useState(0);
@@ -90,10 +90,21 @@ function App() {
     });
   };
   const [name, setName] = useState("");
+  const [predicteResult, setPredicteResult] = useState({});
   const fetchAge = () => {
     Axios.get(`https://api.agify.io/?name=${name}`).then((res) => {
       console.log(res.data);
+      setPredicteResult(res.data);
     });
+  };
+
+  const [generateExcuse, setGenerageExcuse] = useState("");
+  const fetchExcuse = (excuse) => {
+    Axios.get(`https://excuser-three.vercel.app/v1/excuse/${excuse}/`).then(
+      (res) => {
+        setGenerageExcuse(res.data[0].excuse);
+      }
+    );
   };
   return (
     <div className="App">
@@ -186,7 +197,26 @@ function App() {
       <button onClick={fetchAge} className="btn">
         Predict age
       </button>
-      <h1>{fetchAge}</h1>
+      <h1>age is : {predicteResult?.age}</h1>
+      <h1>name is : {predicteResult?.name}</h1>
+      <h1>Generate an excuse</h1>
+      <button className="btn" onClick={() => fetchExcuse("party")}>
+        party
+      </button>
+      <button className="btn" onClick={() => fetchExcuse("family")}>
+        family
+      </button>
+      <button className="btn" onClick={() => fetchExcuse("office")}>
+        office
+      </button>
+      <p>{generateExcuse}</p>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
