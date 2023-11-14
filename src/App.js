@@ -4,6 +4,9 @@ import Axios from "axios";
 import Course from "./Course.js";
 import Text from "./Text.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Home } from "./Pages/Home.js";
+import { About } from "./Pages/About.js";
+import { Contact } from "./Contact.js";
 
 function App() {
   const [age, setAge] = useState(0);
