@@ -3,10 +3,11 @@ import "./App.css";
 import Axios from "axios";
 import Course from "./Course.js";
 import Text from "./Text.js";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Home } from "./Pages/Home.js";
 import { About } from "./Pages/About.js";
-import { Contact } from "./Contact.js";
+import { Contact } from "./Pages/Contact.js";
+import { Nav } from "./Pages/Nav.js";
 
 function App() {
   const [age, setAge] = useState(0);
@@ -214,11 +215,15 @@ function App() {
       </button>
       <p>{generateExcuse}</p>
       <Router>
+        <div>Cars</div>
+        <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<h1>Not Fount</h1>} />
         </Routes>
+        <div>This Is Footer</div>
       </Router>
     </div>
   );
