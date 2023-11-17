@@ -8,6 +8,7 @@ import { Home } from "./Pages/Home.js";
 import { About } from "./Pages/About.js";
 import { Contact } from "./Pages/Contact.js";
 import { Nav } from "./Pages/Nav.js";
+import { Profile } from "./Pages/Profile.js";
 
 function App() {
   const [age, setAge] = useState(0);
@@ -221,6 +222,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/profile/:name?" element={<Profile />} />
           <Route path="*" element={<h1>Not Fount</h1>} />
         </Routes>
         <div>This Is Footer</div>
