@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext } from "react";
 import "./App.css";
 import Axios from "axios";
 import Course from "./Course.js";
@@ -9,6 +9,8 @@ import { About } from "./Pages/About.js";
 import { Contact } from "./Pages/Contact.js";
 import { Nav } from "./Pages/Nav.js";
 import { Profile } from "./Pages/Profile.js";
+
+export const ProfileContext = createContext();
 
 function App() {
   const [age, setAge] = useState(0);
@@ -111,6 +113,9 @@ function App() {
       }
     );
   };
+
+  const [username, setUsername] = useState("Bruce");
+
   return (
     <div className="App">
       {names.map((a, b) => {
@@ -215,18 +220,25 @@ function App() {
         office
       </button>
       <p>{generateExcuse}</p>
-      <Router>
-        <div>Cars</div>
-        <Nav />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/profile/:name?" element={<Profile />} />
-          <Route path="*" element={<h1>Not Fount</h1>} />
-        </Routes>
-        <div>This Is Footer</div>
-      </Router>
+      <ProfileContext.Provider value={{ username, setUsername }}>
+        <Router>
+          <div>Cars</div>
+          <Nav />
+          <Routes>
+            <Route path="/" element={<Home username={username} />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route
+              path="/profile/:name/:id"
+              element={
+                <Profile username={username} setUsername={setUsername} />
+              }
+            />
+            <Route path="*" element={<h1>Not Fount</h1>} />
+          </Routes>
+          <div>This Is Footer</div>
+        </Router>
+      </ProfileContext.Provider>
     </div>
   );
 }
