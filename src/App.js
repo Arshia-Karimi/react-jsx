@@ -9,7 +9,7 @@ import { About } from "./Pages/About.js";
 import { Contact } from "./Pages/Contact.js";
 import { Nav } from "./Pages/Nav.js";
 import { Profile } from "./Pages/Profile.js";
-
+import { QueryClient, QueryClientProvider } from "react-query";
 export const ProfileContext = createContext();
 
 function App() {
@@ -116,6 +116,8 @@ function App() {
 
   const [username, setUsername] = useState("Bruce");
 
+  const client = new QueryClient();
+
   return (
     <div className="App">
       {names.map((a, b) => {
@@ -220,25 +222,27 @@ function App() {
         office
       </button>
       <p>{generateExcuse}</p>
-      <ProfileContext.Provider value={{ username, setUsername }}>
-        <Router>
-          <div>Cars</div>
-          <Nav />
-          <Routes>
-            <Route path="/" element={<Home username={username} />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route
-              path="/profile/:name/:id"
-              element={
-                <Profile username={username} setUsername={setUsername} />
-              }
-            />
-            <Route path="*" element={<h1>Not Fount</h1>} />
-          </Routes>
-          <div>This Is Footer</div>
-        </Router>
-      </ProfileContext.Provider>
+      <QueryClientProvider client={client}>
+        <ProfileContext.Provider value={{ username, setUsername }}>
+          <Router>
+            <div>Cars</div>
+            <Nav />
+            <Routes>
+              <Route path="/" element={<Home username={username} />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route
+                path="/profile/:name/:id"
+                element={
+                  <Profile username={username} setUsername={setUsername} />
+                }
+              />
+              <Route path="*" element={<h1>Not Fount</h1>} />
+            </Routes>
+            <div>This Is Footer</div>
+          </Router>
+        </ProfileContext.Provider>
+      </QueryClientProvider>
     </div>
   );
 }

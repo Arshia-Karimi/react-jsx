@@ -4,6 +4,7 @@ export const Nav = () => {
     <nav>
       <Link to="/">Home</Link> |<Link to="/about">About Page</Link> |
       <Link to="/contact">Contact Me</Link> |
+      <Link to="/profile/name/id">Profile</Link>
     </nav>
   );
 };
