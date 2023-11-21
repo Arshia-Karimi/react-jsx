@@ -10,6 +10,7 @@ import { Contact } from "./Pages/Contact.js";
 import { Nav } from "./Pages/Nav.js";
 import { Profile } from "./Pages/Profile.js";
 import { QueryClient, QueryClientProvider } from "react-query";
+import SubmitFrom from "./Components/submitForm.js";
 export const ProfileContext = createContext();
 
 function App() {
@@ -116,7 +117,11 @@ function App() {
 
   const [username, setUsername] = useState("Bruce");
 
-  const client = new QueryClient();
+  const client = new QueryClient({
+    defaultOptions: {
+      queries: { refetchOnWindowFocus: false },
+    },
+  });
 
   return (
     <div className="App">
@@ -239,10 +244,14 @@ function App() {
               />
               <Route path="*" element={<h1>Not Fount</h1>} />
             </Routes>
-            <div>This Is Footer</div>
+            <Link></Link>
           </Router>
         </ProfileContext.Provider>
       </QueryClientProvider>
+      <hr />
+      <br />
+      <SubmitFrom />
+      <br />
     </div>
   );
 }
