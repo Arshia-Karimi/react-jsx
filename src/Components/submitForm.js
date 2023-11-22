@@ -6,8 +6,8 @@ const SubmitFrom = () => {
     name: yup.string().required("فیلد نام اجباری است"),
     email: yup
       .string()
-      .email("ایمیل نا معتبر است")
-      .required("ایمیل اجباری است"),
+      .email(".ایمیل نا معتبر است")
+      .required(".ایمیل اجباری است"),
     age: yup.number().positive().min(18).max(100).required(),
     password: yup
       .string()

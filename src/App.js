@@ -122,7 +122,7 @@ function App() {
       queries: { refetchOnWindowFocus: false },
     },
   });
-
+  const [isVisible, setIsVisible] = useState(false);
   return (
     <div className="App">
       {names.map((a, b) => {
@@ -252,6 +252,10 @@ function App() {
       <br />
       <SubmitFrom />
       <br />
+      <button className="btn" onClick={() => setIsVisible((prev) => !prev)}>
+        {isVisible ? "Hide" : "Show"}
+      </button>
+      {isVisible && <h1>This is my hidden text</h1>}
     </div>
   );
 }
