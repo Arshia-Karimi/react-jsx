@@ -11,6 +11,7 @@ import { Nav } from "./Pages/Nav.js";
 import { Profile } from "./Pages/Profile.js";
 import { QueryClient, QueryClientProvider } from "react-query";
 import SubmitFrom from "./Components/submitForm.js";
+import { useToggle } from "./useToggle.js";
 export const ProfileContext = createContext();
 
 function App() {
@@ -122,7 +123,7 @@ function App() {
       queries: { refetchOnWindowFocus: false },
     },
   });
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, toggle] = useToggle();
   return (
     <div className="App">
       {names.map((a, b) => {
@@ -252,7 +253,7 @@ function App() {
       <br />
       <SubmitFrom />
       <br />
-      <button className="btn" onClick={() => setIsVisible((prev) => !prev)}>
+      <button className="btn" onClick={toggle}>
         {isVisible ? "Hide" : "Show"}
       </button>
       {isVisible && <h1>This is my hidden text</h1>}

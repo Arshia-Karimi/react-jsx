@@ -5,7 +5,13 @@ import { useQuery } from "react-query";
 import { Axios } from "axios";
 export const Home = () => {
   const { username } = useContext(ProfileContext);
-  const { date : catDate, isLoading, isError, error, refetch } = useQuery(["cat"], () => {
+  const {
+    date: catDate,
+    isLoading,
+    isError,
+    error,
+    refetch,
+  } = useQuery(["cat"], () => {
     return Axios.get("https://catfact.ninja/fact").then((res) => res.date);
   });
 
