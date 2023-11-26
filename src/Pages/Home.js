@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { ProfileContext } from "../App";
 import { useQuery } from "react-query";
-import { Axios } from "axios";
+import Axios from "axios";
 export const Home = () => {
   const { username } = useContext(ProfileContext);
   const {

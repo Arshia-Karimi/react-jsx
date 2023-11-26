@@ -12,6 +12,8 @@ import { Profile } from "./Pages/Profile.js";
 import { QueryClient, QueryClientProvider } from "react-query";
 import SubmitFrom from "./Components/submitForm.js";
 import { useToggle } from "./useToggle.js";
+import { Cat } from "./Cat.js";
+
 export const ProfileContext = createContext();
 
 function App() {
@@ -257,6 +259,7 @@ function App() {
         {isVisible ? "Hide" : "Show"}
       </button>
       {isVisible && <h1>This is my hidden text</h1>}
+      <Cat />
     </div>
   );
 }
