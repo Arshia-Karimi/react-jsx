@@ -13,6 +13,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import SubmitFrom from "./Components/submitForm.js";
 import { useToggle } from "./useToggle.js";
 import { Cat } from "./Cat.js";
+import { useCount } from "./useCount.js";
 
 export const ProfileContext = createContext();
 
@@ -126,6 +127,7 @@ function App() {
     },
   });
   const [isVisible, toggle] = useToggle();
+  const { count, increase, decrease, reset } = useCount();
   return (
     <div className="App">
       {names.map((a, b) => {
@@ -260,6 +262,16 @@ function App() {
       </button>
       {isVisible && <h1>This is my hidden text</h1>}
       <Cat />
+      {count}
+      <button className="btn" onClick={increase}>
+        +
+      </button>
+      <button className="btn" onClick={decrease}>
+        -
+      </button>
+      <button className="btn" onClick={reset}>
+        reset
+      </button>
     </div>
   );
 }
