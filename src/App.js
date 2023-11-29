@@ -14,6 +14,7 @@ import SubmitFrom from "./Components/submitForm.js";
 import { useToggle } from "./useToggle.js";
 import { Cat } from "./Cat.js";
 import { useCount } from "./useCount.js";
+import { Fact } from "./Fact.js";
 
 export const ProfileContext = createContext();
 
@@ -272,6 +273,7 @@ function App() {
       <button className="btn" onClick={reset}>
         reset
       </button>
+      <Fact />
     </div>
   );
 }

@@ -4,10 +4,14 @@ export const initialState = {
   error: false,
 };
 export const factReducer = (state, action) => {
-  if (action.type === "Fetch_start")
-    return { loading: true, fact: "", error: false };
-  if (action.type === "Fetch_success")
-    return { loading: false, fact: action.date, error: false };
-  if (action.type === "Fetch_error")
-    return { loading: true, fact: "", error: true };
+  switch (action.type) {
+    case "fetch_start":
+      return { loading: true, fact: "", error: false };
+    case "fetch_success":
+      return { loading: false, fact: action.date, error: false };
+    case "fetch_error":
+      return { loading: false, fact: "", error: true };
+    default:
+      return state;
+  }
 };
