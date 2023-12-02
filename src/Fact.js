@@ -1,18 +1,19 @@
 import Axios from "axios";
 import { useReducer } from "react";
 import { factReducer, initialState } from "./factReducer";
+import { ACTION_TYPES } from "./facAction";
 
 export const Fact = () => {
   const [state, dispatch] = useReducer(factReducer, initialState);
   const handelFetch = () => {
-    dispatch({ type: "fetch_start" });
+    dispatch({ type: ACTION_TYPES.Fetch_start });
     Axios.get("https://catfact.ninja/fact")
       .then((res) => {
-        dispatch({ type: "fetch_success", date: res.date.fact });
+        dispatch({ type: ACTION_TYPES.fetch_success, date: res.date.fact });
         console.log(res);
       })
       .catch((error) => {
-        dispatch({ type: "fetch_error" });
+        dispatch({ type: ACTION_TYPES.fetch_error });
         console.log(error);
       });
   };

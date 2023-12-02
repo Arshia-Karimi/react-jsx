@@ -1,3 +1,5 @@
+import { ACTION_TYPES } from "./facAction";
+
 export const initialState = {
   loading: false,
   fact: "",
@@ -5,11 +7,11 @@ export const initialState = {
 };
 export const factReducer = (state, action) => {
   switch (action.type) {
-    case "fetch_start":
+    case ACTION_TYPES.Fetch_start:
       return { loading: true, fact: "", error: false };
-    case "fetch_success":
+    case ACTION_TYPES.fetch_success:
       return { loading: false, fact: action.date, error: false };
-    case "fetch_error":
+    case ACTION_TYPES.fetch_error:
       return { loading: false, fact: "", error: true };
     default:
       return state;

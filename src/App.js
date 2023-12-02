@@ -15,6 +15,7 @@ import { useToggle } from "./useToggle.js";
 import { Cat } from "./Cat.js";
 import { useCount } from "./useCount.js";
 import { Fact } from "./Fact.js";
+import { From } from "./Form.js";
 
 export const ProfileContext = createContext();
 
@@ -129,6 +130,7 @@ function App() {
   });
   const [isVisible, toggle] = useToggle();
   const { count, increase, decrease, reset } = useCount();
+  const [product, setProduct] = useState({});
   return (
     <div className="App">
       {names.map((a, b) => {
@@ -274,6 +276,7 @@ function App() {
         reset
       </button>
       <Fact />
+      <From />
     </div>
   );
 }
