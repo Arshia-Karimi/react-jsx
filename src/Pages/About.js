@@ -21,6 +21,12 @@ export const About = () => {
       >
         Go To Contact Page
       </button>
+      <div className="App">
+        <h1>Login</h1>
+        <input />
+        <button className="btn">Login</button>
+        <button className="btn">Logout</button>
+      </div>
     </div>
   );
 };

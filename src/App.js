@@ -3,7 +3,7 @@ import "./App.css";
 import Axios from "axios";
 import Course from "./Course.js";
 import Text from "./Text.js";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Home } from "./Pages/Home.js";
 import { About } from "./Pages/About.js";
 import { Contact } from "./Pages/Contact.js";
@@ -16,6 +16,7 @@ import { Cat } from "./Cat.js";
 import { useCount } from "./useCount.js";
 import { Fact } from "./Fact.js";
 import { From } from "./Form.js";
+import {Provider} from "react-redux";
 
 export const ProfileContext = createContext();
 
@@ -237,6 +238,7 @@ function App() {
       <p>{generateExcuse}</p>
       <QueryClientProvider client={client}>
         <ProfileContext.Provider value={{ username, setUsername }}>
+          <Provider store={}>
           <Router>
             <div>Cars</div>
             <Nav />
@@ -254,6 +256,7 @@ function App() {
             </Routes>
             <Link></Link>
           </Router>
+          </Provider>
         </ProfileContext.Provider>
       </QueryClientProvider>
       <hr />
