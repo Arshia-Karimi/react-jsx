@@ -57,9 +57,11 @@ export const From = () => {
         <button className="btn" type="button" onClick={handelTags}>
           انتخاب تک
         </button>
+        <br />
         {state.tags.map((tag) => {
           return (
             <button
+              className="btn"
               key={tag}
               onClick={() => dispatch({ type: "remove_tag", date: tag })}
             >

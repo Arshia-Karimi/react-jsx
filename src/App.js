@@ -16,7 +16,8 @@ import { Cat } from "./Cat.js";
 import { useCount } from "./useCount.js";
 import { Fact } from "./Fact.js";
 import { From } from "./Form.js";
-import {Provider} from "react-redux";
+import { Provider } from "react-redux";
+import { store } from "./Stor.js";
 
 export const ProfileContext = createContext();
 
@@ -238,24 +239,24 @@ function App() {
       <p>{generateExcuse}</p>
       <QueryClientProvider client={client}>
         <ProfileContext.Provider value={{ username, setUsername }}>
-          <Provider store={}>
-          <Router>
-            <div>Cars</div>
-            <Nav />
-            <Routes>
-              <Route path="/" element={<Home username={username} />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route
-                path="/profile/:name/:id"
-                element={
-                  <Profile username={username} setUsername={setUsername} />
-                }
-              />
-              <Route path="*" element={<h1>Not Fount</h1>} />
-            </Routes>
-            <Link></Link>
-          </Router>
+          <Provider store={store}>
+            <Router>
+              <div>Cars</div>
+              <Nav />
+              <Routes>
+                <Route path="/" element={<Home username={username} />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route
+                  path="/profile/:name/:id"
+                  element={
+                    <Profile username={username} setUsername={setUsername} />
+                  }
+                />
+                <Route path="*" element={<h1>Not Fount</h1>} />
+              </Routes>
+              <Link></Link>
+            </Router>
           </Provider>
         </ProfileContext.Provider>
       </QueryClientProvider>
