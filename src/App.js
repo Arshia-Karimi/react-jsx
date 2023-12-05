@@ -18,6 +18,7 @@ import { Fact } from "./Fact.js";
 import { From } from "./Form.js";
 import { Provider } from "react-redux";
 import { store } from "./Stor.js";
+import { Person } from "./Person.js";
 
 export const ProfileContext = createContext();
 
@@ -133,6 +134,9 @@ function App() {
   const [isVisible, toggle] = useToggle();
   const { count, increase, decrease, reset } = useCount();
   const [product, setProduct] = useState({});
+
+  const Name = "arshia";
+
   return (
     <div className="App">
       {names.map((a, b) => {
@@ -281,6 +285,15 @@ function App() {
       </button>
       <Fact />
       <From />
+      <div>
+        <Person
+          Name={"arshia"}
+          email={"arshiakarimi@gmail.com"}
+          age={7}
+          isMarried={false}
+          courses={["react", "python"]}
+        />
+      </div>
     </div>
   );
 }
