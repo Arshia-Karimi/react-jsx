@@ -288,7 +288,7 @@ function App() {
       <div>
         <Person
           Name={"arshia"}
-          email={"arshiakarimi@gmail.com"}
+          email={"arshia.karimi@gmail.com"}
           age={7}
           isMarried={false}
           courses={["react", "python"]}
